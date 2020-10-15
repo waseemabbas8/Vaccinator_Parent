@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.account.SignUpFragment">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.childhealthcare.parent.ui.account.AccountViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/partial_toolbar"
+            app:titleStr="@{@string/title_sign_up}" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_layout"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/label_name"
+                    style="@style/AppTheme.FieldLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/form_top_margin"
+                    android:text="@string/label_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/name"
+                    style="@style/AppTheme.Field"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:hint="@string/hint_name"
+                    android:text="@={viewModel.name}"
+                    app:validateEmpty="@{true}"
+                    android:inputType="textPersonName|textCapSentences"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/label_name"
+                    app:layout_constraintTop_toBottomOf="@+id/label_name" />
+
+                <TextView
+                    android:id="@+id/label_cnic"
+                    style="@style/AppTheme.FieldLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/label_cnic"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name" />
+
+                <EditText
+                    android:id="@+id/cnic"
+                    style="@style/AppTheme.Field"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:hint="@string/hint_cnic"
+                    android:inputType="number"
+                    android:text="@={viewModel.userName}"
+                    app:validateEmpty="@{true}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/label_name"
+                    app:layout_constraintTop_toBottomOf="@+id/label_cnic" />
+
+                <TextView
+                    android:id="@+id/label_phone"
+                    style="@style/AppTheme.FieldLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/label_phone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cnic" />
+
+                <EditText
+                    android:id="@+id/phone"
+                    style="@style/AppTheme.Field"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:hint="@string/hint_phone"
+                    android:inputType="phone"
+                    android:text="@={viewModel.phone}"
+                    app:validateEmpty="@{true}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/label_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/label_phone" />
+
+                <TextView
+                    android:id="@+id/label_uc"
+                    style="@style/AppTheme.FieldLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/label_uc"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phone" />
+
+                <Spinner
+                    android:id="@+id/sp_uc"
+                    style="@style/AppTheme.Spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    app:spItemsList="@{viewModel.unionCouncils}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/label_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/label_uc" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/standard_margin"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@+id/sp_uc"
+                    app:layout_constraintEnd_toEndOf="@+id/sp_uc"
+                    app:layout_constraintTop_toTopOf="@+id/sp_uc" />
+
+                <TextView
+                    android:id="@+id/label_moh"
+                    style="@style/AppTheme.FieldLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/label_moh"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sp_uc" />
+
+                <Spinner
+                    android:id="@+id/sp_moh"
+                    style="@style/AppTheme.Spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    app:spItemsList="@{viewModel.mohallas}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/label_phone"
+                    app:layout_constraintTop_toBottomOf="@+id/label_moh" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/standard_margin"
+                    android:src="@drawable/ic_arrow_down"
+                    app:layout_constraintBottom_toBottomOf="@+id/sp_moh"
+                    app:layout_constraintEnd_toEndOf="@+id/sp_moh"
+                    app:layout_constraintTop_toTopOf="@+id/sp_moh" />
+
+                <TextView
+                    android:id="@+id/label_password"
+                    style="@style/AppTheme.FieldLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/label_password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sp_moh" />
+
+                <EditText
+                    android:id="@+id/password"
+                    style="@style/AppTheme.Field"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:hint="@string/hint_password"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.password}"
+                    app:validateEmpty="@{true}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/label_password"
+                    app:layout_constraintTop_toBottomOf="@+id/label_password" />
+
+                <TextView
+                    android:id="@+id/label_confirm_password"
+                    style="@style/AppTheme.FieldLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/horizontal_margin"
+                    android:layout_marginTop="@dimen/vertical_margin"
+                    android:text="@string/label_confirm_password"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/password" />
+
+                <EditText
+                    android:id="@+id/confirm_password"
+                    style="@style/AppTheme.Field"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/horizontal_margin"
+                    android:hint="@string/hint_confirm_password"
+                    android:inputType="textPassword"
+                    android:text="@={viewModel.confirmPassword}"
+                    app:validateEmpty="@{true}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/label_confirm_password"
+                    app:layout_constraintTop_toBottomOf="@+id/label_confirm_password" />
+
+                <Button
+                    android:id="@+id/btn_sign_up"
+                    style="@style/AppTheme.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/form_top_margin"
+                    android:layout_marginBottom="@dimen/vertical_margin"
+                    android:text="@string/title_sign_up"
+                    android:onClick="@{(view) -> viewModel.signUp(view)}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/confirm_password"
+                    app:layout_constraintStart_toStartOf="@+id/confirm_password"
+                    app:layout_constraintTop_toBottomOf="@+id/confirm_password" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.progressbarVisibility}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

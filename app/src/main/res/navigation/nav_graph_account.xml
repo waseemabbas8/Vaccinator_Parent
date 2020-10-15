@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_account"
+    app:startDestination="@id/dest_login">
+
+    <fragment
+        android:id="@+id/dest_login"
+        android:name="com.childhealthcare.parent.ui.account.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_dest_login_to_dest_sign_up"
+            app:destination="@id/dest_sign_up" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_sign_up"
+        android:name="com.childhealthcare.parent.ui.account.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" />
+</navigation>

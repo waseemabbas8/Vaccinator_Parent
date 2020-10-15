@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Parent</string>
+    <string name="child_care">Child Care</string>
+    <string name="personal">Profile</string>
+    <string name="chldren">Children</string>
+    <string name="vaccination">Vaccination</string>
+    <string name="query">Query</string>
+    <string name="login">Login</string>
+    <string name="hint_user_name">Enter your CNIC</string>
+    <string name="hint_password">Enter Password</string>
+    <string name="label_name">Name:</string>
+    <string name="hint_name">Enter your name</string>
+    <string name="label_cnic">CNIC:</string>
+    <string name="hint_cnic">e.g 3xxxxxxxxxxxx</string>
+    <string name="label_phone">Phone:</string>
+    <string name="hint_phone">e.g 03xxxxxxxxx</string>
+    <string name="title_sign_up">Sign Up</string>
+    <string name="label_uc">Union Council:</string>
+    <string name="label_moh">Mohallah:</string>
+    <string name="label_password">Password:</string>
+    <string name="label_confirm_password">Confirm Password:</string>
+    <string name="hint_confirm_password">Renter your password</string>
+</resources>
