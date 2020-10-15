@@ -17,7 +17,7 @@
         <include
             android:id="@+id/toolbar_layout"
             layout="@layout/partial_toolbar"
-            app:titleStr="@{@string/title_sign_up}" />
+            app:titleStr="@{@string/register}" />
 
 
         <ScrollView

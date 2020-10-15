@@ -59,8 +59,9 @@ class AccountViewModel(
                 val response = apiRepository.login(userName.value ?: "", password.value ?: "")
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        prefRepository.saveUser(it.data)
-                        _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_OK, it.message))
+                        if (it.code == RESPONSE_CODE_OK)
+                            prefRepository.saveUser(it.data)
+                        _generalResponse.postValue(GeneralResponse(it.code, it.message))
                     }
                 }
             } catch (e: Exception) {
@@ -86,7 +87,8 @@ class AccountViewModel(
     fun signUp(view: View) {
         if (!validator.validate()) return
         if (ucId == 0 || mohId == 0) {
-            Toast.makeText(view.context, "Please select your UC and Mohallah", Toast.LENGTH_SHORT).show()
+            Toast.makeText(view.context, "Please select your UC and Mohallah", Toast.LENGTH_SHORT)
+                .show()
             return
         }
         if (confirmPassword.value != password.value) {
@@ -104,8 +106,9 @@ class AccountViewModel(
                 val response = apiRepository.signUp(user)
                 if (response.isSuccessful) {
                     response.body()?.let {
-                        prefRepository.saveUser(it.data)
-                        _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_OK, it.message))
+                        if (it.code == RESPONSE_CODE_OK)
+                            prefRepository.saveUser(it.data)
+                        _generalResponse.postValue(GeneralResponse(it.code, it.message))
                     }
                 }
             } catch (e: Exception) {

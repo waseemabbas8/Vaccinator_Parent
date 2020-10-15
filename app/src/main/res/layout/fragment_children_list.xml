@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.common.ChildrenListFragment">
+
+    <data>
+
+        <variable
+            name="onChildClick"
+            type="com.childhealthcare.parent.ui.child.ChildrenListFragment.OnChildClick" />
+
+        <variable
+            name="viewModel"
+            type="com.childhealthcare.parent.ui.child.ChildrenListViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/partial_toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleStr="@{`Your Children`}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_children_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingBottom="@dimen/standard_margin"
+            android:clipToPadding="false"
+            app:hasFixSize="@{true}"
+            app:itemLayout="@{@layout/item_children_list_vac}"
+            app:itemsList="@{viewModel.children}"
+            app:itemClickListener="@{onChildClick}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_layout"
+            tools:listitem="@layout/item_children_list_vac" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.progressbarVisibility}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -15,9 +15,13 @@
     <string name="label_phone">Phone:</string>
     <string name="hint_phone">e.g 03xxxxxxxxx</string>
     <string name="title_sign_up">Sign Up</string>
+    <string name="register">Parent Registration</string>
     <string name="label_uc">Union Council:</string>
     <string name="label_moh">Mohallah:</string>
     <string name="label_password">Password:</string>
     <string name="label_confirm_password">Confirm Password:</string>
     <string name="hint_confirm_password">Renter your password</string>
+    <string name="label_location">Location:</string>
+
+    <string name="label_last_vaccination">Last Vaccination: </string>
 </resources>

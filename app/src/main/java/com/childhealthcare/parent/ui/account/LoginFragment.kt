@@ -12,13 +12,14 @@ import com.childhealthcare.parent.MainActivity
 import com.childhealthcare.parent.R
 import com.childhealthcare.parent.data.RESPONSE_CODE_OK
 import com.childhealthcare.parent.databinding.FragmentLoginBinding
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LoginFragment : Fragment() {
 
     private lateinit var binding: FragmentLoginBinding
-    private val mViewModel: AccountViewModel by viewModel()
+    private val mViewModel: AccountViewModel by sharedViewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

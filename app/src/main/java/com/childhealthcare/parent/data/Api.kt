@@ -1,5 +1,6 @@
 package com.childhealthcare.parent.data
 
+import com.childhealthcare.parent.model.Child
 import com.childhealthcare.parent.model.User
 import com.childhealthcare.parent.model.UserSignUpModel
 import com.childhealthcare.parent.model.common.BaseResponse
@@ -27,6 +28,11 @@ interface Api {
     suspend fun getMohallasByUcId(
         @Query("ucid") ucId: Int
     ): Response<List<SpinnerItem>>
+
+    @GET("GetChildListByCNIC")
+    suspend fun getChildren(
+        @Query("cnic") cnic: String
+    ): Response<List<Child>>
 //
 //    @GET("GetChildListByMuhalla")
 //    suspend fun getChildrenList(

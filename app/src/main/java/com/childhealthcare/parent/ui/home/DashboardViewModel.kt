@@ -7,7 +7,7 @@ class DashboardViewModel(private val prefRepository: PrefRepository) : ViewModel
 
     val dashboardItems = prefRepository.getDashboardItems()
 
-//    val user = prefRepository.getUser()
+    val user = prefRepository.getUser()
 
     fun logoutUser() {
         prefRepository.deleteUser()

@@ -5,6 +5,8 @@ import com.childhealthcare.parent.data.Api
 import com.childhealthcare.parent.data.ApiRepository
 import com.childhealthcare.parent.data.PrefRepository
 import com.childhealthcare.parent.ui.account.AccountViewModel
+import com.childhealthcare.parent.ui.child.ChildrenListViewModel
+import com.childhealthcare.parent.ui.home.DashboardViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -19,6 +21,8 @@ private const val BASE_URL = "http://vaccinsystem.gearhostpreview.com/"
 val viewModelModule = module {
 
     viewModel { AccountViewModel(get(), get()) }
+    viewModel { DashboardViewModel(get()) }
+    viewModel { ChildrenListViewModel(get(), get<PrefRepository>().getUser()?.cNIC ?: "") }
 }
 
 val repositoryModule = module {

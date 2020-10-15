@@ -13,4 +13,6 @@ class ApiRepository(private val api: Api) {
     suspend fun getAllUcs()  = api.getAllUcs()
 
     suspend fun getMohallasByUcId(ucId: Int) = api.getMohallasByUcId(ucId)
+
+    suspend fun getChildren(cnic: String) = api.getChildren(cnic)
 }

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.account.ProfileFragment">
+
+    <data>
+        <variable
+            name="user"
+            type="com.childhealthcare.parent.model.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/card_shadow">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:background="@drawable/bg_home_header"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/height_120"
+            android:layout_height="@dimen/height_120"
+            android:src="@drawable/ic_user_avatar"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintVertical_bias="0.446" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginTop="@dimen/form_top_margin"
+            android:src="@drawable/ic_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_10"
+            android:layout_marginTop="@dimen/form_top_margin"
+            android:text="@string/label_name"
+            style="@style/AppTheme.LabelNormal"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+        <TextView
+            android:id="@+id/text_profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_10"
+            android:text="@{user.name, default = Ali}"
+            style="@style/AppTheme.Body"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:background="#D3D3D3"
+            app:layout_constraintStart_toStartOf="@+id/text_profile_name"
+            app:layout_constraintTop_toBottomOf="@+id/text_profile_name" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_phone2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_10"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:text="@string/label_phone"
+            style="@style/AppTheme.LabelNormal"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+        <TextView
+            android:id="@+id/text_profile_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_10"
+            android:text="@{user.mobile, default = 0302188898}"
+            style="@style/AppTheme.Body"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:background="#D3D3D3"
+            app:layout_constraintStart_toStartOf="@+id/text_profile_phone"
+            app:layout_constraintTop_toBottomOf="@+id/text_profile_phone" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:src="@drawable/ic_card"
+            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_10"
+            android:layout_marginLeft="@dimen/padding_10"
+            android:layout_marginTop="13dp"
+            android:text="@string/label_cnic"
+            style="@style/AppTheme.LabelNormal"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/view3" />
+
+        <TextView
+            android:id="@+id/text_profile_cnic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_10"
+            android:text="@{user.CNIC, default = NA}"
+            style="@style/AppTheme.Body"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <View
+            android:id="@+id/view4"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:background="#D3D3D3"
+            app:layout_constraintStart_toStartOf="@+id/text_profile_cnic"
+            app:layout_constraintTop_toBottomOf="@+id/text_profile_cnic" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_location"
+            app:layout_constraintStart_toStartOf="@+id/imageView5"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_10"
+            android:layout_marginTop="13dp"
+            android:text="@string/label_location"
+            style="@style/AppTheme.LabelNormal"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+        <TextView
+            android:id="@+id/text_profile_location"
+            android:layout_width="123dp"
+            android:layout_height="21dp"
+            android:layout_marginStart="@dimen/padding_10"
+            android:text="@{user.ucName + ` ` + user.mohName, default = NA}"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toEndOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
