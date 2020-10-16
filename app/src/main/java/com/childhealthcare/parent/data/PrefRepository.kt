@@ -17,7 +17,7 @@ class PrefRepository(private val app: Application){
 
     fun getDashboardItems() : List<GridMenu> = listOf(
         GridMenu(app.getString(R.string.personal),R.drawable.ic_user_avatar),
-        GridMenu(app.getString(R.string.chldren),R.drawable.ic_vaccine),
+        GridMenu(app.getString(R.string.chldren),R.drawable.ic_children),
         GridMenu(app.getString(R.string.query),R.drawable.ic_query)
     )
 

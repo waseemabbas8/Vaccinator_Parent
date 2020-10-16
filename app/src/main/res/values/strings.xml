@@ -24,4 +24,8 @@
     <string name="label_location">Location:</string>
 
     <string name="label_last_vaccination">Last Vaccination: </string>
+    <string name="label_polio_status">Polio Status</string>
+    <string name="label_upcoming">Upcoming</string>
+    <string name="label_vaccinations">Vaccinations</string>
+    <string name="history">History</string>
 </resources>

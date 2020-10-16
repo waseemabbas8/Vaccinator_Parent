@@ -2,6 +2,7 @@ package com.childhealthcare.parent.model
 
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class User(
     @SerializedName("CNIC")
@@ -16,4 +17,4 @@ data class User(
     val name: String,
     @SerializedName("UC")
     val ucName: String
-)
+): Serializable

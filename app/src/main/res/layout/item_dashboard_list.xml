@@ -12,12 +12,12 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/standard_margin"
         app:cardCornerRadius="12dp"
-        app:cardElevation="10dp"
+        app:cardElevation="@dimen/standard_margin"
         android:layout_marginBottom="12dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/horizontal_margin"
+        android:layout_marginEnd="@dimen/horizontal_margin"
         android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,12 +28,12 @@
                 android:id="@+id/img"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
+                android:layout_marginTop="@dimen/form_top_margin"
+                android:layout_marginStart="@dimen/form_top_margin"
+                android:layout_marginEnd="@dimen/form_top_margin"
                 imgResource="@{obj.image}"
                 android:src="@drawable/ic_user_avatar"
-                app:layout_constraintDimensionRatio="2:1"
+                app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -5,6 +5,7 @@ import com.childhealthcare.parent.data.Api
 import com.childhealthcare.parent.data.ApiRepository
 import com.childhealthcare.parent.data.PrefRepository
 import com.childhealthcare.parent.ui.account.AccountViewModel
+import com.childhealthcare.parent.ui.child.ChildViewModel
 import com.childhealthcare.parent.ui.child.ChildrenListViewModel
 import com.childhealthcare.parent.ui.home.DashboardViewModel
 import okhttp3.OkHttpClient
@@ -23,6 +24,9 @@ val viewModelModule = module {
     viewModel { AccountViewModel(get(), get()) }
     viewModel { DashboardViewModel(get()) }
     viewModel { ChildrenListViewModel(get(), get<PrefRepository>().getUser()?.cNIC ?: "") }
+    viewModel { (childId: Int) ->
+        ChildViewModel(get(), childId)
+    }
 }
 
 val repositoryModule = module {

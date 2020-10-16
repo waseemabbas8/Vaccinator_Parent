@@ -33,6 +33,11 @@ interface Api {
     suspend fun getChildren(
         @Query("cnic") cnic: String
     ): Response<List<Child>>
+
+    @GET("GetSingleChildDetail")
+    suspend fun getChildDetails(
+        @Query("id") childId: Int
+    ): Response<Child>
 //
 //    @GET("GetChildListByMuhalla")
 //    suspend fun getChildrenList(

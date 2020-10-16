@@ -1,6 +1,5 @@
 package com.childhealthcare.parent.data
 
-import com.childhealthcare.parent.model.User
 import com.childhealthcare.parent.model.UserSignUpModel
 
 
@@ -15,4 +14,6 @@ class ApiRepository(private val api: Api) {
     suspend fun getMohallasByUcId(ucId: Int) = api.getMohallasByUcId(ucId)
 
     suspend fun getChildren(cnic: String) = api.getChildren(cnic)
+
+    suspend fun getChildDetails(childId: Int) = api.getChildDetails(childId)
 }

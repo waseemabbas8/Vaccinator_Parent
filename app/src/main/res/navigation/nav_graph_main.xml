@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/dest_dashboard">
+
+    <fragment
+        android:id="@+id/dest_dashboard"
+        android:name="com.childhealthcare.parent.ui.home.DashboardFragment"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dest_dashboard_to_dest_profile"
+            app:destination="@id/dest_profile" />
+        <action
+            android:id="@+id/action_dest_dashboard_to_dest_children_list"
+            app:destination="@id/dest_children_list" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_children_list"
+        android:name="com.childhealthcare.parent.ui.child.ChildrenListFragment"
+        android:label="fragment_children_list"
+        tools:layout="@layout/fragment_children_list" >
+        <action
+            android:id="@+id/action_dest_children_list_to_dest_child"
+            app:destination="@id/dest_child" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_child"
+        android:name="com.childhealthcare.parent.ui.child.ChildFragment"
+        android:label="fragment_child"
+        tools:layout="@layout/fragment_child" >
+        <argument
+            android:name="childId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_profile"
+        android:name="com.childhealthcare.parent.ui.account.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <argument
+            android:name="user"
+            app:argType="com.childhealthcare.parent.model.User" />
+    </fragment>
+</navigation>

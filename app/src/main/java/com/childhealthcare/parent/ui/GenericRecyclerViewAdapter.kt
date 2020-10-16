@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.childhealthcare.parent.BR
 import java.util.*
 
 class GenericRecyclerViewAdapter<T>(private val items: List<T>, private val layout: Int) :
@@ -58,7 +59,7 @@ class GenericRecyclerViewAdapter<T>(private val items: List<T>, private val layo
 
     class GenericViewHolder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
         fun <T> bind(obj: T) {
-//            binding.setVariable(BR.obj, obj)
+            binding.setVariable(BR.obj, obj)
             binding.executePendingBindings()
         }
 

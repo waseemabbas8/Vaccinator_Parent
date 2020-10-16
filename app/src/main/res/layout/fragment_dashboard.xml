@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.home.DashboardFragment">
 
-<!--    <data>-->
-<!--        <variable-->
-<!--            name="viewModel"-->
-<!--            type="com.childhealthcare.vaccinator.ui.home.VacinatorDashboardViewModel" />-->
-<!--        <variable-->
-<!--            name="onItemClick"-->
-<!--            type="com.childhealthcare.vaccinator.ui.home.VaccinatorDashboardFragment.OnDashboardItemClick" />-->
-<!--    </data>-->
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.childhealthcare.parent.ui.home.DashboardViewModel" />
+
+        <variable
+            name="onItemClick"
+            type="com.childhealthcare.parent.ui.home.DashboardFragment.OnDashboardItemClick" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
-        <ImageView
+        <View
             android:id="@+id/bg_top_header"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
-            android:src="@drawable/bg_home_header"
+            android:layout_height="210dp"
+            android:background="@drawable/bg_home_header"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,11 +31,11 @@
             android:id="@+id/logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_exit"
-            android:layout_marginEnd="@dimen/horizontal_margin"
             android:layout_marginTop="@dimen/vertical_margin"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:src="@drawable/ic_exit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/user_photo"
@@ -54,12 +55,12 @@
             android:layout_marginStart="18dp"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="75dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="@{viewModel.user.name, default = Ali}"
             android:textAllCaps="true"
-            android:text="Waseem"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:fontFamily="@font/poppins_semibold"
             app:layout_constraintStart_toEndOf="@id/user_photo"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,47 +69,33 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
-            android:layout_marginLeft="18dp"
             android:layout_marginTop="32dp"
-            android:text="0302188898"
+            android:fontFamily="@font/poppins"
+            android:text="@{viewModel.user.mobile, default = 0302188898}"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:fontFamily="@font/poppins"
             app:layout_constraintStart_toEndOf="@id/user_photo"
             app:layout_constraintTop_toTopOf="@id/user_name" />
-
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_marginBottom="20dp"-->
-<!--            android:nestedScrollingEnabled="false"-->
-<!--            android:padding="10dp"-->
-<!--            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:hasFixSize="@{true}"-->
-<!--            app:itemsList="@{viewModel.dashboardItems}"-->
-<!--            app:itemLayout="@{@layout/item_dashboard_list}"-->
-<!--            app:itemClickListener="@{onItemClick}"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@id/bg_top_header"-->
-<!--            app:layout_constraintVertical_bias="0.0"-->
-<!--            app:spanCount="2"-->
-<!--            tools:itemCount="6"-->
-<!--            tools:listitem="@layout/item_dashboard_list" />-->
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="20dp"
-            android:padding="10dp"
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/standard_margin"
+            android:paddingTop="@dimen/vertical_margin"
+            android:paddingEnd="@dimen/standard_margin"
+            android:paddingBottom="@dimen/vertical_margin"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bg_top_header"
             app:spanCount="2"
-            tools:itemCount="2"
+            app:hasFixSize="@{true}"
+            app:itemLayout="@{@layout/item_dashboard_list}"
+            app:itemsList="@{viewModel.dashboardItems}"
+            app:itemClickListener="@{onItemClick}"
+            tools:itemCount="3"
             tools:listitem="@layout/item_dashboard_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

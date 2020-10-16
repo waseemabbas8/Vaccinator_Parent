@@ -35,8 +35,8 @@ class ChildrenListFragment : Fragment() {
 
     inner class OnChildClick : OnListItemClickListener<Child> {
         override fun onItemClick(item: Child, pos: Int) {
-//            val action = ChildrenListFragmentDirections.actionDestChildrenToDestChild(item.id)
-//            binding.root.findNavController().navigate(action)
+            val action = ChildrenListFragmentDirections.actionDestChildrenListToDestChild(item.id)
+            binding.root.findNavController().navigate(action)
         }
 
     }

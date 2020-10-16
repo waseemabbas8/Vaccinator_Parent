@@ -14,6 +14,14 @@ class ProfileFragment : Fragment() {
 
     private var user: User? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            val args = ProfileFragmentArgs.fromBundle(it)
+            user = args.user
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
