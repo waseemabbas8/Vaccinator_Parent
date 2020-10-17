@@ -1,18 +1,18 @@
 package com.childhealthcare.parent.ui.child
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.childhealthcare.parent.data.RESPONSE_CODE_ERROR
 import com.childhealthcare.parent.databinding.FragmentChildBinding
+import com.childhealthcare.parent.ui.TabsFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 
-class ChildFragment : Fragment() {
+class ChildFragment : TabsFragment() {
 
     private lateinit var binding: FragmentChildBinding
     private val mViewModel: ChildViewModel by viewModel{
@@ -36,14 +36,14 @@ class ChildFragment : Fragment() {
         binding = FragmentChildBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
 
-        binding.rvVaccinations.isNestedScrollingEnabled = false
-
         return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.viewModel = mViewModel
+
+        initTabs(binding.viewPager, binding.tabs, ChildPagerAdapter(this, mViewModel))
 
         mViewModel.generalResponse.observe(viewLifecycleOwner, {
             if (it == null) return@observe
