@@ -8,6 +8,8 @@ import com.childhealthcare.parent.ui.account.AccountViewModel
 import com.childhealthcare.parent.ui.child.ChildViewModel
 import com.childhealthcare.parent.ui.child.ChildrenListViewModel
 import com.childhealthcare.parent.ui.home.DashboardViewModel
+import com.childhealthcare.parent.ui.query.AddQueryViewModel
+import com.childhealthcare.parent.ui.query.QueriesViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
@@ -27,6 +29,8 @@ val viewModelModule = module {
     viewModel { (childId: Int) ->
         ChildViewModel(get(), childId)
     }
+    viewModel { QueriesViewModel(get(), get<PrefRepository>().getUser()?.id ?: 0) }
+    viewModel { AddQueryViewModel(get(), get<PrefRepository>().getUser()?.id ?: 0) }
 }
 
 val repositoryModule = module {

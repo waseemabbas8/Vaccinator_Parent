@@ -9,19 +9,17 @@ import androidx.lifecycle.viewModelScope
 import com.childhealthcare.parent.data.ApiRepository
 import com.childhealthcare.parent.data.MSG_INTERNET_FAILURE
 import com.childhealthcare.parent.data.RESPONSE_CODE_ERROR
-import com.childhealthcare.parent.model.QueryModel
+import com.childhealthcare.parent.model.QueryRequestModel
 import com.childhealthcare.parent.model.common.GeneralResponse
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.IOException
 
-class QueriesViewModel(
+class AddQueryViewModel(
     private val repository: ApiRepository,
     private val userId: Int
 ) : ViewModel() {
 
-    val queries: LiveData<List<QueryModel>>
-    private val _queries = MutableLiveData<List<QueryModel>>()
+    val description = MutableLiveData<String>()
 
     val progressbarVisibility: LiveData<Int>
     private val _progressbarVisibility = MutableLiveData<Int>()
@@ -30,28 +28,36 @@ class QueriesViewModel(
     private val _generalResponse = MutableLiveData<GeneralResponse>()
 
     init {
-        queries = _queries
         progressbarVisibility = _progressbarVisibility
+        _progressbarVisibility.value = View.GONE
         generalResponse = _generalResponse
     }
 
-    fun getQueriesList() {
-        viewModelScope.launch(Dispatchers.IO) {
-            _progressbarVisibility.postValue(View.VISIBLE)
+    @WorkerThread
+    fun addQuery() {
+        viewModelScope.launch {
+            _generalResponse.postValue(null)
+            _progressbarVisibility.value = View.VISIBLE
             try {
-                val response = repository.getQueriesByParentId(userId)
-                if (response.isSuccessful) {
+                if (description.value.isNullOrEmpty()){
+                    _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, "Please add some description."))
+                    return@launch
+                }
+                val query = QueryRequestModel(description.value!!, userId)
+                val response = repository.submitQuery(query)
+                if (response.isSuccessful){
                     response.body()?.let {
-                        _queries.postValue(it.data)
+                        _generalResponse.postValue(it)
                     }
                 }
+
             } catch (e: Exception) {
                 val msg = if (e is IOException) MSG_INTERNET_FAILURE else e.message.toString()
                 _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, msg))
             } catch (t: Throwable) {
-                _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, t.message ?: "ERROR"))
+                _generalResponse.postValue(GeneralResponse(RESPONSE_CODE_ERROR, t.message.toString()))
             }
-            _progressbarVisibility.postValue(View.GONE)
+            _progressbarVisibility.value = View.GONE
         }
     }
 

@@ -1,19 +1,21 @@
 package com.childhealthcare.parent.data
 
-import com.childhealthcare.parent.model.Child
-import com.childhealthcare.parent.model.User
-import com.childhealthcare.parent.model.UserSignUpModel
+import com.childhealthcare.parent.model.*
 import com.childhealthcare.parent.model.common.BaseResponse
+import com.childhealthcare.parent.model.common.GeneralResponse
 import com.childhealthcare.parent.model.common.SpinnerItem
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface Api {
 
     @POST("SignInParent")
     suspend fun login(
-     @Query("cnic") cnic: String,
-     @Query("password") password: String
+        @Query("cnic") cnic: String,
+        @Query("password") password: String
     ): Response<BaseResponse<User>>
 
     @POST("SignupParent")
@@ -38,6 +40,17 @@ interface Api {
     suspend fun getChildDetails(
         @Query("id") childId: Int
     ): Response<Child>
+
+    @GET("ComplaintListByParentID")
+    suspend fun getQueriesByParentId(
+        @Query("pid") parentId: Int
+    ): Response<BaseResponse<List<QueryModel>>>
+
+    @POST("SubmitComplaint")
+    suspend fun submitQuery(
+        @Body query: QueryRequestModel
+    ): Response<GeneralResponse>
+
 //
 //    @GET("GetChildListByMuhalla")
 //    suspend fun getChildrenList(
@@ -71,8 +84,5 @@ interface Api {
 //        @Body task: TodoTask
 //    ): Response<GeneralResponse>
 //
-//    @GET("GetListofQueriesByCouncilId")
-//    suspend fun getQueriesByCouncilId(
-//        @Query("ucid") ucId: Int
-//    ): Response<BaseResponse<List<QueryModel>>>
+
 }

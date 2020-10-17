@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_dest_dashboard_to_dest_children_list"
             app:destination="@id/dest_children_list" />
+        <action
+            android:id="@+id/action_dest_dashboard_to_dest_queries"
+            app:destination="@id/dest_queries" />
     </fragment>
     <fragment
         android:id="@+id/dest_children_list"
@@ -44,4 +47,18 @@
             android:name="user"
             app:argType="com.childhealthcare.parent.model.User" />
     </fragment>
+    <fragment
+        android:id="@+id/dest_queries"
+        android:name="com.childhealthcare.parent.ui.query.QueriesFragment"
+        android:label="fragment_queries"
+        tools:layout="@layout/fragment_queries" >
+        <action
+            android:id="@+id/action_dest_queries_to_dest_add_query"
+            app:destination="@id/dest_add_query" />
+    </fragment>
+    <fragment
+        android:id="@+id/dest_add_query"
+        android:name="com.childhealthcare.parent.ui.query.AddQueryFragment"
+        android:label="fragment_add_query"
+        tools:layout="@layout/fragment_add_query" />
 </navigation>

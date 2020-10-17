@@ -30,6 +30,7 @@
     <string name="history">History</string>
     <string name="label_add_polio">Add Polio</string>
     <string name="label_add_vaccine">Add Vaccine</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="label_description">Description</string>
+    <string name="hint_task_description">Enter your task description…</string>
+    <string name="label_submit">Submit</string>
 </resources>

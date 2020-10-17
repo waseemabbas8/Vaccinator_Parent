@@ -78,9 +78,8 @@ class DashboardFragment : Fragment() {
                     binding.root.findNavController().navigate(action)
                 }
                 QUERY_INDEX -> {
-//                    val action =
-//                        VaccinatorDashboardFragmentDirections.actionDestVaccinatorDashboardToDestProfile()
-//                    binding.root.findNavController().navigate(action)
+                    val action = DashboardFragmentDirections.actionDestDashboardToDestQueries()
+                    binding.root.findNavController().navigate(action)
                 }
             }
         }

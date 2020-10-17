@@ -1,5 +1,6 @@
 package com.childhealthcare.parent.data
 
+import com.childhealthcare.parent.model.QueryRequestModel
 import com.childhealthcare.parent.model.UserSignUpModel
 
 
@@ -16,4 +17,8 @@ class ApiRepository(private val api: Api) {
     suspend fun getChildren(cnic: String) = api.getChildren(cnic)
 
     suspend fun getChildDetails(childId: Int) = api.getChildDetails(childId)
+
+    suspend fun getQueriesByParentId(parentId: Int) = api.getQueriesByParentId(parentId)
+
+    suspend fun submitQuery(query: QueryRequestModel) = api.submitQuery(query)
 }
